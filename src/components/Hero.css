@@ -1,5 +1,6 @@
 .hero {
-    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -125,7 +126,9 @@
 @media (max-width: 1024px) {
     .hero {
         padding-top: calc(var(--nav-height) + var(--space-8));
-        min-height: 90vh; /* Slightly shorter on tablets */
+        height: 100vh; /* Changed from min-height */
+        width: 100%;
+        overflow: hidden;
     }
 
     .hero-container {
@@ -148,7 +151,9 @@
 @media (max-width: 768px) {
     .hero {
         padding-top: calc(var(--nav-height) + var(--space-6));
-        min-height: 85vh; /* Optimize for mobile viewport */
+        height: 100vh; /* Changed from min-height */
+        width: 100%;
+        overflow: hidden;
     }
     
     .hero-container {
