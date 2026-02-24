@@ -9,6 +9,7 @@
     border-bottom: 1px solid var(--border-subtle);
     z-index: 1000;
     transition: all var(--transition-base);
+    overflow: hidden;
 }
 
 .nav.scrolled {

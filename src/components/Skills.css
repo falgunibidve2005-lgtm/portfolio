@@ -1,6 +1,7 @@
 .skills {
     background: transparent;
     position: relative;
+    overflow: hidden;
 }
 
 .skills::before {

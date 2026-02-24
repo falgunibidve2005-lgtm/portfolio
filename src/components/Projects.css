@@ -1,6 +1,6 @@
 .projects {
     background: transparent;
-    overflow-x: hidden;
+    overflow: hidden;
     padding-bottom: var(--space-20);
 }
 
@@ -185,6 +185,7 @@
     margin-bottom: var(--space-2);
     background: linear-gradient(90deg, #fff, #a1a1aa);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

@@ -189,7 +189,7 @@ p {
 .section {
   padding: var(--space-24) 0;
   /* Prevent horizontal overflow */
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .section-header {

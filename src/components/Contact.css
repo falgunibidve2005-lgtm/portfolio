@@ -1,6 +1,7 @@
 .contact {
     background: transparent;
     position: relative;
+    overflow: hidden;
 }
 
 .contact::before {

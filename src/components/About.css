@@ -1,6 +1,7 @@
 .about {
     background: transparent;
     position: relative;
+    overflow: hidden;
 }
 
 .about::before {

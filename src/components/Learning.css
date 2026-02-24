@@ -1,6 +1,7 @@
 .learning {
     background: transparent;
     position: relative;
+    overflow: hidden;
 }
 
 .learning-content {
