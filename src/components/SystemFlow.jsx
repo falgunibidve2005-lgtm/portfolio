@@ -5,11 +5,8 @@ import {
     Float,
     Sphere,
     Torus,
-    MeshDistortMaterial,
-    MeshWobbleMaterial,
     Points,
-    PointMaterial,
-    Environment
+    PointMaterial
 } from '@react-three/drei'
 import { fetchSystemStatus, startPolling } from '../utils/api'
 import './SystemFlow.css'
@@ -43,43 +40,37 @@ function DetailedCentralSphere({ isActive }) {
     return (
         <Float speed={1.2} rotationIntensity={0.2} floatIntensity={0.25}>
             <group ref={sphereRef}>
-                {/* Outer detailed sphere - using MeshDistortMaterial for a more dynamic look */}
-                <Sphere args={[1.2, 128, 128]}>
-                    <MeshDistortMaterial 
+                {/* Outer detailed sphere */}
+                <Sphere args={[1.2, 64, 64]}>
+                    <meshStandardMaterial 
                         color="#3b82f6" 
-                        speed={2}
-                        distort={0.4}
                         emissive="#1e40af"
-                        emissiveIntensity={isActive ? 0.6 : 0.3}
+                        emissiveIntensity={isActive ? 0.4 : 0.2}
                         transparent
-                        opacity={0.6}
+                        opacity={0.7}
                         roughness={0.1}
                         metalness={0.9}
                     />
                 </Sphere>
 
-                {/* Inner glass sphere */}
-                <Sphere ref={innerSphereRef} args={[0.9, 64, 64]}>
-                    <meshPhysicalMaterial 
+                {/* Inner wireframe sphere */}
+                <Sphere ref={innerSphereRef} args={[0.9, 32, 32]}>
+                    <meshStandardMaterial 
                         color="#60a5fa" 
                         emissive="#3b82f6"
-                        emissiveIntensity={0.5}
+                        emissiveIntensity={0.3}
                         transparent
-                        opacity={0.3}
-                        transmission={0.5}
-                        thickness={0.5}
-                        roughness={0}
+                        opacity={0.4}
+                        wireframe
                     />
                 </Sphere>
 
-                {/* Core pulse sphere */}
-                <Sphere ref={coreRef} args={[0.4, 64, 64]}>
-                    <MeshWobbleMaterial 
+                {/* Core sphere */}
+                <Sphere ref={coreRef} args={[0.4, 32, 32]}>
+                    <meshStandardMaterial 
                         color="#1e40af" 
-                        emissive="#3b82f6"
-                        emissiveIntensity={isActive ? 1.5 : 0.8}
-                        factor={0.4}
-                        speed={1}
+                        emissive="#1e40af"
+                        emissiveIntensity={isActive ? 0.8 : 0.5}
                         metalness={1.0}
                         roughness={0.0}
                     />
@@ -111,39 +102,39 @@ function DetailedOrbitalRings({ isActive }) {
         <group>
             {/* Outer detailed rings */}
             <group ref={ringsRef}>
-                <Torus args={[2.2, 0.04, 32, 200]}>
+                <Torus args={[2.2, 0.04, 16, 100]}>
                     <meshStandardMaterial 
                         color="#60a5fa" 
                         emissive="#3b82f6"
-                        emissiveIntensity={isActive ? 1.2 : 0.4}
-                        transparent
-                        opacity={0.9}
-                        metalness={0.9}
-                        roughness={0.1}
-                    />
-                </Torus>
-                
-                <Torus args={[1.9, 0.03, 32, 200]} rotation={[Math.PI / 2, 0, 0]}>
-                    <meshStandardMaterial 
-                        color="#a78bfa" 
-                        emissive="#8b5cf6"
-                        emissiveIntensity={isActive ? 1.2 : 0.4}
+                        emissiveIntensity={isActive ? 0.5 : 0.25}
                         transparent
                         opacity={0.8}
-                        metalness={0.9}
-                        roughness={0.1}
+                        metalness={0.8}
+                        roughness={0.2}
                     />
                 </Torus>
                 
-                <Torus args={[1.6, 0.025, 32, 200]} rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+                <Torus args={[1.9, 0.03, 16, 100]} rotation={[Math.PI / 2, 0, 0]}>
                     <meshStandardMaterial 
-                        color="#34d399" 
-                        emissive="#10b981"
-                        emissiveIntensity={isActive ? 1.2 : 0.4}
+                        color="#8b5cf6" 
+                        emissive="#7c3aed"
+                        emissiveIntensity={isActive ? 0.5 : 0.25}
                         transparent
                         opacity={0.7}
-                        metalness={0.9}
-                        roughness={0.1}
+                        metalness={0.8}
+                        roughness={0.2}
+                    />
+                </Torus>
+                
+                <Torus args={[1.6, 0.025, 16, 100]} rotation={[Math.PI / 4, Math.PI / 4, 0]}>
+                    <meshStandardMaterial 
+                        color="#10b981" 
+                        emissive="#059669"
+                        emissiveIntensity={isActive ? 0.5 : 0.25}
+                        transparent
+                        opacity={0.6}
+                        metalness={0.8}
+                        roughness={0.2}
                     />
                 </Torus>
             </group>
@@ -349,12 +340,12 @@ function DetailedSmall3DScene({ systemData, scrollFactor }) {
             <DetailedCornerSpheres scrollFactor={scrollFactor} />
             
             {/* Enhanced lighting for details */}
-            <ambientLight intensity={0.5} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#ffffff" castShadow />
-            <pointLight position={[5, 5, 5]} intensity={1.5} color="#60a5fa" />
-            <pointLight position={[-5, -5, -5]} intensity={1.2} color="#a78bfa" />
-            <pointLight position={[0, 8, 0]} intensity={1.0} color="#34d399" />
-            <Environment preset="city" />
+            <ambientLight intensity={0.3} />
+            <pointLight position={[5, 5, 5]} intensity={1.2} color="#ffffff" />
+            <pointLight position={[-5, -5, -5]} intensity={0.8} color="#3b82f6" />
+            <pointLight position={[0, 8, 0]} intensity={0.9} color="#8b5cf6" />
+            <pointLight position={[3, -3, 3]} intensity={0.6} color="#10b981" />
+            <pointLight position={[-3, 3, -3]} intensity={0.5} color="#f59e0b" />
         </group>
     )
 }
