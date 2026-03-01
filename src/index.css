@@ -219,7 +219,7 @@ p {
   position: relative;
   scroll-snap-align: start;
   scroll-margin-top: 80px;
-  overflow: visible !important;
+  overflow: visible; /* Allow sections to grow naturally with their content */
 }
 
 .section-header {
