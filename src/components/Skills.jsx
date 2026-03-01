@@ -24,7 +24,7 @@ const skillCategories = [
                 <polyline points="8 6 2 12 8 18" />
             </svg>
         ),
-        skills: ['C++', 'Python', 'JavaScript', 'TypeScript', 'SQL']
+        skills: ['C++', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'CUDA']
     },
     {
         id: 'backend',

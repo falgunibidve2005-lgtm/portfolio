@@ -130,6 +130,88 @@ const projects = [
         tech: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Cloud Deployment'],
         learnings: 'Learned how content structure directly impacts user experience. Poor taxonomy = poor discoverability. Also practiced cultural sensitivity in technical decisions.',
         futureScope: 'Add user-contributed content with moderation, implement recommendation engine based on reading history.'
+    },
+    {
+        id: 'cuda-hpc',
+        title: 'CUDA HPC',
+        subtitle: 'Parallel Matrix Operations & Image Processing',
+        icon: (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2" ry="2" />
+                <path d="M6 12h12" />
+                <path d="M12 6v12" />
+                <path d="M2 10h4" />
+                <path d="M2 14h4" />
+                <path d="M18 10h4" />
+                <path d="M18 14h4" />
+                <path d="M10 2v4" />
+                <path d="M14 2v4" />
+                <path d="M10 18v4" />
+                <path d="M14 18v4" />
+            </svg>
+        ),
+        problem: 'Scientific computing and high-resolution image processing often exceed the capabilities of sequential CPU processing, leading to significant latency in data-intensive tasks.',
+        architecture: {
+            description: 'SIMT (Single Instruction, Multiple Threads) architecture leveraging thousands of GPU cores.',
+            flow: 'C++ App → CUDA Kernel → Global Memory → Shared Memory → Thread Execution',
+            layers: [
+                { name: 'Host Layer', detail: 'C++ application managing data loading and device allocation' },
+                { name: 'Memory Pipeline', detail: 'Pinned memory and streams for asynchronous data transfers' },
+                { name: 'Kernel Layer', detail: 'Custom CUDA kernels optimized for coalesced memory access' }
+            ]
+        },
+        decisions: [
+            'Used shared memory tiles to minimize global memory bandwidth bottlenecks',
+            'Implemented warp-level primitives for faster reductions',
+            'Chose C++ over Python wrappers for maximum control over memory layout'
+        ],
+        tradeoffs: 'Manual memory management increases complexity and development time compared to high-level libraries, but offers superior performance for specific algorithms.',
+        features: [
+            'Parallel Matrix Multiplication (Tiled)',
+            'Gaussian Noise Reduction Filter',
+            'Sobel Edge Detection Kernels',
+            'Asynchronous stream processing for overlapping transfers'
+        ],
+        tech: ['CUDA', 'C++', 'NVIDIA GPU', 'Parallel Computing', 'Linear Algebra'],
+        learnings: 'Deepened my understanding of hardware-level constraints, specifically how memory alignment and thread divergence can make orders-of-magnitude difference in performance.',
+        futureScope: 'Implement multi-GPU support using NCCL and expand to real-time video stream processing.'
+    },
+    {
+        id: 'mern-nexus',
+        title: 'MERN Nexus',
+        subtitle: 'Full-Stack E-commerce Ecosystem',
+        icon: (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                <path d="M3 6h18" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+        ),
+        problem: 'Modern shoppers expect seamless, real-time updates and secure transactions. Building a platform that balances fast load times with consistent data across catalog, cart, and orders is a major challenge.',
+        architecture: {
+            description: 'Full-stack MERN application with centralized state management and secure auth.',
+            flow: 'React/Redux → Express/JWT → Node.js Runtime → MongoDB Atlas',
+            layers: [
+                { name: 'Frontend', detail: 'React with Redux Toolkit for complex cart state and product filtering' },
+                { name: 'Auth Service', detail: 'JWT-based authentication with bcrypt hashing and refresh tokens' },
+                { name: 'Data Store', detail: 'MongoDB with Mongoose schemas for orders, products, and users' }
+            ]
+        },
+        decisions: [
+            'Used Redux Toolkit for cart state to ensure UI consistency across multiple components',
+            'Implemented custom middleware for role-based route protection (Admin vs. User)',
+            'Chose MongoDB Atlas for horizontal scalability to handle traffic spikes'
+        ],
+        tradeoffs: 'Client-side state management adds complexity but creates a "snappy" app feel by avoiding full-page reloads for cart updates.',
+        features: [
+            'Dynamic Product Catalog with advanced filtering',
+            'Secure User Authentication & Profile Management',
+            'Real-time Cart synchronization',
+            'Admin Dashboard for inventory and order tracking'
+        ],
+        tech: ['MongoDB', 'Express', 'React', 'Node.js', 'Redux Toolkit', 'JWT'],
+        learnings: 'Mastered the flow of token-based authentication and learned how to structure large-scale React applications using the "feature-based" folder pattern.',
+        futureScope: 'Integrate Stripe/Razorpay for actual payments, implement product recommendations using simple collaborative filtering.'
     }
 ]
 
