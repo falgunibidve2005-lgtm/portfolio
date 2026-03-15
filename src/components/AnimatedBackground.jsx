@@ -9,37 +9,36 @@ function AnimatedBackground() {
     const mouseRef = useRef({ x: -1000, y: -1000 })
 
     const createParticles = useCallback((width, height) => {
-        const count = Math.min(Math.floor((width * height) / 18000), 80)
+        const count = Math.min(Math.floor((width * height) / 8000), 250)
         return Array.from({ length: count }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            radius: Math.random() * 1.8 + 0.5,
-            opacity: Math.random() * 0.5 + 0.1,
-            pulseSpeed: Math.random() * 0.02 + 0.005,
+            vx: (Math.random() - 0.5) * 0.05,
+            vy: (Math.random() - 0.5) * 0.05,
+            radius: Math.random() * 1.2 + 0.2,
+            opacity: Math.random() * 0.7 + 0.1,
+            pulseSpeed: Math.random() * 0.05 + 0.01,
             pulsePhase: Math.random() * Math.PI * 2,
         }))
     }, [])
 
     const createOrbs = useCallback((width, height) => {
         const colors = [
-            { r: 96, g: 165, b: 250 },   // accent blue
-            { r: 167, g: 139, b: 250 },   // purple
-            { r: 59, g: 130, b: 246 },    // deeper blue
-            { r: 139, g: 92, b: 246 },    // violet
+            { r: 99, g: 102, b: 241 },   // Indigo
+            { r: 6, g: 182, b: 212 },    // Cyan
+            { r: 139, g: 92, b: 246 },   // Violet
         ]
-        return Array.from({ length: 4 }, (_, i) => ({
+        return Array.from({ length: 3 }, (_, i) => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: (Math.random() - 0.5) * 0.15,
-            vy: (Math.random() - 0.5) * 0.15,
-            radius: Math.random() * 200 + 120,
+            vx: (Math.random() - 0.5) * 0.08,
+            vy: (Math.random() - 0.5) * 0.08,
+            radius: Math.random() * 300 + 200,
             color: colors[i % colors.length],
-            opacity: Math.random() * 0.04 + 0.02,
-            wobbleSpeed: Math.random() * 0.003 + 0.001,
+            opacity: 0.04,
+            wobbleSpeed: Math.random() * 0.002 + 0.001,
             wobblePhase: Math.random() * Math.PI * 2,
-            wobbleRadius: Math.random() * 30 + 10,
+            wobbleRadius: Math.random() * 40 + 20,
         }))
     }, [])
 
@@ -76,23 +75,21 @@ function AnimatedBackground() {
 
             ctx.clearRect(0, 0, w, h)
 
-            // Draw gradient orbs
+            // Draw nebula orbs
             const orbs = orbsRef.current
             for (let i = 0; i < orbs.length; i++) {
                 const orb = orbs[i]
                 orb.wobblePhase += orb.wobbleSpeed
-                orb.x += orb.vx + Math.sin(orb.wobblePhase) * 0.3
-                orb.y += orb.vy + Math.cos(orb.wobblePhase * 0.7) * 0.3
+                orb.x += orb.vx + Math.sin(orb.wobblePhase) * 0.1
+                orb.y += orb.vy + Math.cos(orb.wobblePhase * 0.7) * 0.1
 
-                // Wrap around edges
                 if (orb.x < -orb.radius) orb.x = w + orb.radius
                 if (orb.x > w + orb.radius) orb.x = -orb.radius
                 if (orb.y < -orb.radius) orb.y = h + orb.radius
                 if (orb.y > h + orb.radius) orb.y = -orb.radius
 
                 const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.radius)
-                grad.addColorStop(0, `rgba(${orb.color.r},${orb.color.g},${orb.color.b},${orb.opacity * 1.5})`)
-                grad.addColorStop(0.5, `rgba(${orb.color.r},${orb.color.g},${orb.color.b},${orb.opacity * 0.5})`)
+                grad.addColorStop(0, `rgba(${orb.color.r},${orb.color.g},${orb.color.b},${orb.opacity})`)
                 grad.addColorStop(1, `rgba(${orb.color.r},${orb.color.g},${orb.color.b},0)`)
                 ctx.fillStyle = grad
                 ctx.beginPath()
@@ -100,72 +97,65 @@ function AnimatedBackground() {
                 ctx.fill()
             }
 
-            // Update & draw particles
-            const particles = particlesRef.current
-            const connectionDist = 120
+            // Update & draw stars
+            const stars = particlesRef.current
             const mx = mouseRef.current.x
             const my = mouseRef.current.y
 
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i]
-                p.pulsePhase += p.pulseSpeed
-                p.x += p.vx
-                p.y += p.vy
+            for (let i = 0; i < stars.length; i++) {
+                const s = stars[i]
+                s.pulsePhase += s.pulseSpeed
+                s.x += s.vx
+                s.y += s.vy
 
-                // Mouse interaction — gentle push away
-                const dmx = p.x - mx
-                const dmy = p.y - my
-                const mouseDist = Math.sqrt(dmx * dmx + dmy * dmy)
-                if (mouseDist < 150 && mouseDist > 0) {
-                    const force = (150 - mouseDist) / 150 * 0.4
-                    p.vx += (dmx / mouseDist) * force * 0.05
-                    p.vy += (dmy / mouseDist) * force * 0.05
+                // Subtle parallax based on mouse
+                if (mx > 0) {
+                    const dx = (mx - w/2) / (w/2) * s.radius * 2
+                    const dy = (my - h/2) / (h/2) * s.radius * 2
+                    s.x -= dx * 0.01
+                    s.y -= dy * 0.01
                 }
 
-                // Dampen velocity
-                p.vx *= 0.998
-                p.vy *= 0.998
+                if (s.x < 0) s.x = w
+                if (s.x > w) s.x = 0
+                if (s.y < 0) s.y = h
+                if (s.y > h) s.y = 0
 
-                // Wrap around
-                if (p.x < 0) p.x = w
-                if (p.x > w) p.x = 0
-                if (p.y < 0) p.y = h
-                if (p.y > h) p.y = 0
-
-                // Pulsing opacity
-                const pulseAlpha = p.opacity + Math.sin(p.pulsePhase) * 0.15
+                // Twinkling
+                const alpha = s.opacity * (0.5 + Math.sin(s.pulsePhase) * 0.5)
 
                 ctx.beginPath()
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-                ctx.fillStyle = `rgba(200, 210, 255, ${Math.max(0.05, pulseAlpha)})`
+                ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2)
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.1, alpha)})`
                 ctx.fill()
 
-                // Draw connections
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j]
-                    const dx = p.x - p2.x
-                    const dy = p.y - p2.y
-                    const dist = Math.sqrt(dx * dx + dy * dy)
-                    if (dist < connectionDist) {
-                        const lineAlpha = (1 - dist / connectionDist) * 0.12
-                        ctx.beginPath()
-                        ctx.moveTo(p.x, p.y)
-                        ctx.lineTo(p2.x, p2.y)
-                        ctx.strokeStyle = `rgba(96, 165, 250, ${lineAlpha})`
-                        ctx.lineWidth = 0.5
-                        ctx.stroke()
+                // Occasional subtle connections for depth
+                if (i % 8 === 0) {
+                    for (let j = i + 1; j < Math.min(i + 3, stars.length); j++) {
+                        const s2 = stars[j]
+                        const dx = s.x - s2.x
+                        const dy = s.y - s2.y
+                        const dist = Math.sqrt(dx * dx + dy * dy)
+                        if (dist < 100) {
+                            ctx.beginPath()
+                            ctx.moveTo(s.x, s.y)
+                            ctx.lineTo(s2.x, s2.y)
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist/100) * 0.05})`
+                            ctx.lineWidth = 0.3
+                            ctx.stroke()
+                        }
                     }
                 }
             }
 
             // Draw mouse glow
             if (mx > 0 && my > 0) {
-                const mouseGrad = ctx.createRadialGradient(mx, my, 0, mx, my, 180)
-                mouseGrad.addColorStop(0, 'rgba(96, 165, 250, 0.06)')
-                mouseGrad.addColorStop(1, 'rgba(96, 165, 250, 0)')
+                const mouseGrad = ctx.createRadialGradient(mx, my, 0, mx, my, 200)
+                mouseGrad.addColorStop(0, 'rgba(99, 102, 241, 0.05)')
+                mouseGrad.addColorStop(1, 'rgba(99, 102, 241, 0)')
                 ctx.fillStyle = mouseGrad
                 ctx.beginPath()
-                ctx.arc(mx, my, 180, 0, Math.PI * 2)
+                ctx.arc(mx, my, 200, 0, Math.PI * 2)
                 ctx.fill()
             }
 

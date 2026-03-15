@@ -24,205 +24,80 @@ const itemVariants = {
 
 const projects = [
     {
-        id: 'aura',
-        title: 'Aura',
-        subtitle: 'Generative AI Platform for Interview Preparation',
-        color: '#60a5fa', // Blue
-        icon: (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
-                <path d="M12 2a10 10 0 0 1 10 10" />
-                <circle cx="12" cy="12" r="6" />
-            </svg>
-        ),
-        problem: 'Traditional interview prep is fragmented — students practice alone without structured feedback, while companies and TPOs lack visibility into candidate readiness.',
-        architecture: {
-            description: 'Three-tier architecture with role-based access control',
-            flow: 'React Frontend → FastAPI/Supabase Edge Functions → PostgreSQL + AI APIs',
-            layers: [
-                { name: 'Presentation', detail: 'React with protected routes per role (Student/Company/TPO)' },
-                { name: 'Business Logic', detail: 'Supabase Edge Functions handling auth, sessions, AI calls' },
-                { name: 'Data Layer', detail: 'PostgreSQL with RLS policies, separate tables per entity' }
-            ]
-        },
-        decisions: [
-            'Chose Supabase over custom auth to ship faster while maintaining security',
-            'Used edge functions for AI calls to keep API keys server-side',
-            'Implemented row-level security instead of application-level checks'
-        ],
-        tradeoffs: 'Supabase simplifies auth but limits custom session handling. Accepted this tradeoff for faster iteration at this stage.',
-        features: [
-            'AI-generated interview questions with context awareness',
-            'Role-based dashboards for students, companies, TPOs',
-            'Session tracking and progress analytics',
-            'Secure API key management via edge functions'
-        ],
-        tech: ['Supabase', 'PostgreSQL', 'Generative AI', 'React', 'Edge Functions'],
-        learnings: 'Learned how role-based systems require thinking about data access at the database level, not just the UI. RLS policies forced me to design cleaner data boundaries.',
-        futureScope: 'Add real-time mock interview sessions with WebRTC, implement more granular analytics per topic area.'
-    },
-    {
-        id: 'petguard',
-        title: 'PetGuard',
-        subtitle: 'Smart Pet Fitness Belt & Companion App',
+        id: 'farmer-income',
+        title: "Farmer's Income & Expenditure Management",
+        subtitle: 'Financial Tracking System for Farmers',
         color: '#10b981', // Emerald
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
         ),
-        problem: 'Pet owners often miss early health signals because they lack continuous, objective activity data. Existing solutions are either too complex or disconnected from actionable insights.',
+        problem: 'Farmers lack accessible tools to track farming and household finances, leading to poor visibility into cash flow.',
         architecture: {
-            description: 'IoT data pipeline with real-time processing',
-            flow: 'Hardware Sensor → Backend API → Database → Client App',
+            description: 'Full-stack web application with PHP and MySQL',
+            flow: 'HTML/CSS/JS → PHP → MySQL → Reports',
             layers: [
-                { name: 'Device Layer', detail: 'Conceptual fitness belt sending periodic activity payloads' },
-                { name: 'Ingestion', detail: 'REST API endpoints receiving and validating sensor data' },
-                { name: 'Storage & Analytics', detail: 'Supabase with time-series queries for trend analysis' }
+                { name: 'UI/UX', detail: 'Responsive dashboard for transaction entry and summaries.' },
+                { name: 'Backend', detail: 'PHP logic for data processing and categorization.' },
+                { name: 'Database', detail: 'SQL schema optimized for financial reporting.' }
             ]
         },
         decisions: [
-            'Designed API-first to decouple hardware development from app development',
-            'Used polling over WebSockets for MVP simplicity',
-            'Normalized activity data into standardized units before storage'
+            'Used PHP for simple, reliable server-side processing.',
+            'Normalized SQL schema to separate farming and household categories.',
+            'Implemented automated report generation for financial summaries.'
         ],
-        tradeoffs: 'Polling introduces latency vs. real-time push. Acceptable for activity tracking where second-level precision isn\'t critical.',
+        tradeoffs: 'Chose a classic PHP stack over heavy frameworks to ensure simplicity and stable deployment.',
         features: [
-            'Activity data ingestion from hardware sensors',
-            'Historical trend visualization',
-            'Threshold-based health alerts',
-            'Multi-pet support per user account'
+            'Farming & household income tracking',
+            'Automated financial reports',
+            'Transaction categorization',
+            'Optimized SQL data retrieval'
         ],
-        tech: ['Supabase', 'React', 'REST APIs', 'Data Visualization', 'IoT Concepts'],
-        learnings: 'Practiced designing systems where the backend must be robust enough to handle unreliable client data. Learned to validate and normalize at ingestion.',
-        futureScope: 'Migrate to WebSocket for real-time updates, add ML-based anomaly detection for health alerts.'
+        tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL']
     },
     {
-        id: 'gyansetu',
-        title: 'GyanSetu',
-        subtitle: 'Exploring Cultural Roots & Knowledge',
-        color: '#f59e0b', // Amber
+        id: 'household-budget',
+        title: 'Household Budget Management System',
+        subtitle: 'Daily Expense Tracker with Budget Monitoring',
+        color: '#60a5fa', // Blue
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>
         ),
-        problem: 'Cultural and religious knowledge is often scattered across unreliable sources, making it difficult for learners to find authentic, respectful content in one place.',
+        problem: 'Manual expense tracking is error-prone and lacks insights, making budget planning difficult for families.',
         architecture: {
-            description: 'Content-driven MERN stack with structured taxonomy',
-            flow: 'React Frontend → Express API → MongoDB (content store)',
+            description: 'PHP-powered web app with category-based analytics',
+            flow: 'HTML/JS → PHP Controller → MySQL → Analytics',
             layers: [
-                { name: 'Frontend', detail: 'React with category-based navigation and search' },
-                { name: 'API Layer', detail: 'Express.js with RESTful endpoints for content CRUD' },
-                { name: 'Database', detail: 'MongoDB with documents structured by culture, category, and content type' }
+                { name: 'UI', detail: 'JavaScript-enhanced forms for budget monitoring.' },
+                { name: 'Logic', detail: 'PHP logic for expense validation and categorization.' },
+                { name: 'Data', detail: 'SQL queries for spending pattern analysis.' }
             ]
         },
         decisions: [
-            'Used MongoDB for flexible schema — content types vary significantly across cultures',
-            'Implemented content tagging system for cross-cultural discovery',
-            'Separated content creation from content display APIs'
+            'Implemented category-based tracking for meaningful analysis.',
+            'Used SQL aggregation for efficient pattern computation.',
+            'Designed budget alerts for approaching spending limits.'
         ],
-        tradeoffs: 'MongoDB flexibility means less enforced structure — mitigated by validation at API layer. Trade-off for faster content iteration.',
+        tradeoffs: 'Focused on server-side stability and simplicity over framework complexity.',
         features: [
-            'Culture-wise content exploration (Hindu, Muslim, Sikh, Christian, Jain)',
-            'Book and article discovery with categorization',
-            'Search with filters by culture and content type',
-            'Respectful, neutral presentation of all traditions'
+            'Daily household expense tracking',
+            'Budget monitoring & alerts',
+            'Expense categorization',
+            'Pattern analysis dashboard'
         ],
-        tech: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Cloud Deployment'],
-        learnings: 'Learned how content structure directly impacts user experience. Poor taxonomy = poor discoverability. Also practiced cultural sensitivity in technical decisions.',
-        futureScope: 'Add user-contributed content with moderation, implement recommendation engine based on reading history.'
-    },
-    {
-        id: 'cuda-hpc',
-        title: 'GPU Parallel Reduction Engine (CUDA)',
-        subtitle: 'C++, CUDA, Parallel Computing',
-        color: '#818cf8', // Indigo
-        icon: (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="2" ry="2" />
-                <path d="M6 12h12" />
-                <path d="M12 6v12" />
-                <path d="M2 10h4" />
-                <path d="M2 14h4" />
-                <path d="M18 10h4" />
-                <path d="M18 14h4" />
-                <path d="M10 2v4" />
-                <path d="M14 2v4" />
-                <path d="M10 18v4" />
-                <path d="M14 18v4" />
-            </svg>
-        ),
-        problem: 'Efficiently summing or aggregating large datasets (like image pixel values or physics simulations) on sequential hardware is slow. This project explores high-throughput parallel aggregation.',
-        architecture: {
-            description: 'Implementation of a tree-structured reduction algorithm for logarithmic time complexity.',
-            flow: 'Global Array → Shared Memory Blocks → Tree Reduction → Synchronized Atomic Addition',
-            layers: [
-                { name: 'Memory Strategy', detail: 'Using CUDA shared memory to reduce global memory traffic' },
-                { name: 'Sync Layer', detail: 'Explicit thread synchronization using __syncthreads()' },
-                { name: 'Comparison', detail: 'Benchmarking CPU sequential sum vs GPU parallel reduction' }
-            ]
-        },
-        decisions: [
-            'Implemented a tree-based reduction to minimize idle threads in the warp',
-            'Used pointer jumping and loop unrolling for maximum instruction throughput',
-            'Chose shared memory over global memory for block-level intermediate sums'
-        ],
-        tradeoffs: 'Shared memory has a limited size per SM; managed this by carefully batching thread blocks to prevent overflows.',
-        features: [
-            'Tree-based GPU parallel reduction algorithm',
-            'CPU vs GPU execution benchmarking suite',
-            'Memory latency and sync overhead measurement',
-            'Exploration of SIMT execution and thread blocks'
-        ],
-        tech: ['CUDA', 'C++', 'Parallel Computing', 'SIMT', 'NVIDIA GPU'],
-        learnings: 'Mastered the nuances of thread synchronization and learned how to exploit the SIMT architecture to achieve significant throughput gains over sequential processing.',
-        futureScope: 'Optimize further with shuffle instructions to eliminate shared memory bank conflicts.'
-    },
-    {
-        id: 'mern-nexus',
-        title: 'Full-Stack MERN E-Commerce Platform',
-        subtitle: 'React 19, Node.js, Express, MongoDB, Tailwind CSS, Vite',
-        color: '#22d3ee', // Cyan
-        icon: (
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                <path d="M3 6h18" />
-                <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
-        ),
-        problem: 'Building a scalable, production-ready commerce platform requires balancing complex business rules like admin approvals, secure payments, and role-based access control.',
-        architecture: {
-            description: 'Production-style MERN ecosystem with JWT security and middleware validation.',
-            flow: 'React 19 Frontend → Express Validator → Node.js Middleware → MongoDB Atlas',
-            layers: [
-                { name: 'Security', detail: 'JWT-based auth with Helmet and express-validator protection' },
-                { name: 'API Layer', detail: 'RESTful API with 15+ endpoints for products, orders, and users' },
-                { name: 'Auth Workflow', detail: 'RBAC system with Super-Admin approval for seller accounts' }
-            ]
-        },
-        decisions: [
-            'Selected React 19 for the latest performance improvements and concurrent features',
-            'Implemented custom Redux toolkit logic for complex cart state management',
-            'Stored high-resolution product images using a scalable storage solution'
-        ],
-        tradeoffs: 'Used complex validation middleware which slightly increased latency but significantly improved data integrity and security.',
-        features: [
-            'Role-Based Access Control (RBAC)',
-            'Super-Admin account and order approval workflow',
-            'REST API with 15+ secured endpoints',
-            'Interactive onboarding tour for enhanced UX'
-        ],
-        tech: ['MongoDB', 'Express', 'React 19', 'Node.js', 'Tailwind CSS', 'Vite'],
-        learnings: 'Learned how to design complex workflows like Super-Admin approvals and mastered securing multi-endpoint APIs using standard security practices.',
-        futureScope: 'Implement full offline support with Service Workers and add real-time inventory alerts.'
+        tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'SQL']
     }
 ]
 
 function Projects() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const activeProject = projects[activeIndex];
+    const [activeIndex, setActiveIndex] = useState(0)
+    const activeProject = projects[activeIndex]
 
     return (
         <section className="projects section" id="projects">
@@ -235,9 +110,9 @@ function Projects() {
                     variants={fadeUpVariants}
                 >
                     <div className="header-text-group">
-                        <h2 className="section-title">Projects Console</h2>
+                        <h2 className="section-title">Projects</h2>
                         <p className="section-subtitle">
-                            Select a system below to view architectural breakdowns and details
+                            Select a project below to explore the details and technical breakdown
                         </p>
                     </div>
                 </motion.div>
@@ -253,7 +128,7 @@ function Projects() {
                     >
                         <div className="projects-menu">
                             {projects.map((project, index) => {
-                                const isActive = index === activeIndex;
+                                const isActive = index === activeIndex
                                 return (
                                     <button 
                                         key={project.id} 
@@ -265,7 +140,7 @@ function Projects() {
                                             {project.icon}
                                         </div>
                                         <div className="menu-item-text">
-                                            <span className="menu-item-id">SYS.0{index + 1}</span>
+                                            <span className="menu-item-id">PRJ.0{index + 1}</span>
                                             <span className="menu-item-title">{project.title}</span>
                                         </div>
                                         {isActive && (
@@ -279,7 +154,7 @@ function Projects() {
                                             />
                                         )}
                                     </button>
-                                );
+                                )
                             })}
                         </div>
                     </motion.aside>
@@ -365,16 +240,6 @@ function Projects() {
                                                     <li key={i}>{feature}</li>
                                                 ))}
                                             </ul>
-                                        </motion.div>
-
-                                        <motion.div variants={itemVariants} className="detail-section detail-learning">
-                                            <h4 className="detail-section-title">What I Learned</h4>
-                                            <p className="detail-text">{activeProject.learnings}</p>
-                                        </motion.div>
-
-                                        <motion.div variants={itemVariants} className="detail-section detail-future">
-                                            <h4 className="detail-section-title">Next Steps</h4>
-                                            <p className="detail-text">{activeProject.futureScope}</p>
                                         </motion.div>
                                     </div>
                                 </div>

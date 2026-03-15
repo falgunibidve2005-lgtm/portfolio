@@ -17,27 +17,26 @@ const staggerContainer = {
 const skillCategories = [
     {
         id: 'languages',
-        title: 'Languages',
+        title: 'Programming Languages',
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="16 18 22 12 16 6" />
                 <polyline points="8 6 2 12 8 18" />
             </svg>
         ),
-        skills: ['C++', 'Python', 'Java', 'JavaScript', 'TypeScript', 'CUDA']
+        skills: ['Java', 'Python', 'C', 'C++']
     },
     {
-        id: 'backend',
-        title: 'Backend',
+        id: 'web',
+        title: 'Web Technologies',
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-                <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-                <line x1="6" y1="6" x2="6.01" y2="6" />
-                <line x1="6" y1="18" x2="6.01" y2="18" />
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg>
         ),
-        skills: ['FastAPI', 'Node.js', 'Express', 'Tailwind CSS', 'REST APIs']
+        skills: ['HTML', 'CSS', 'JavaScript', 'React', 'PHP']
     },
     {
         id: 'databases',
@@ -49,28 +48,42 @@ const skillCategories = [
                 <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
             </svg>
         ),
-        skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Supabase', 'Firebase']
+        skills: ['SQL', 'MySQL']
+    },
+    {
+        id: 'concepts',
+        title: 'Core Computer Science',
+        icon: (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+            </svg>
+        ),
+        skills: ['Data Structures & Algorithms', 'Object Oriented Programming', 'DBMS', 'Software Testing']
     },
     {
         id: 'tools',
-        title: 'Tools',
+        title: 'Tools & Environment',
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
             </svg>
         ),
-        skills: ['Git', 'Docker', 'VS Code', 'Postman', 'Linux']
+        skills: ['Git', 'VS Code', 'Android Studio']
     },
     {
-        id: 'concepts',
-        title: 'Core Concepts',
+        id: 'soft',
+        title: 'Soft Skills',
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
         ),
-        skills: ['DSA', 'API Design', 'DB Fundamentals', 'System Design Basics']
+        skills: ['Communication', 'Teamwork', 'Problem Solving', 'Time Management']
     }
 ]
 
@@ -86,7 +99,7 @@ function Skills() {
                     variants={fadeUpVariants}
                 >
                     <h2 className="section-title">Skills & Tools</h2>
-                    <p className="section-subtitle">Grouped by how I think, not by buzzwords</p>
+                    <p className="section-subtitle">Technical foundations and soft skills I bring to every project</p>
                 </motion.div>
 
                 <motion.div 

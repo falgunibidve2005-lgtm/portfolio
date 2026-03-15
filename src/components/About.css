@@ -2,24 +2,19 @@
     background: transparent;
     position: relative;
     overflow: visible;
-    width: 100%;
-    min-height: 100vh;
-    height: auto;
 }
 
 .about::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
 .about-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.8fr 1fr;
     gap: var(--space-12);
 }
 
@@ -27,12 +22,13 @@
 .about-content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-10);
+    gap: var(--space-12);
 }
 
 .about-intro h2 {
-    font-size: var(--fs-3xl);
-    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+    font-size: var(--fs-4xl);
+    margin-bottom: var(--space-6);
 }
 
 .about-lead {
@@ -44,157 +40,168 @@
 .about-lead em {
     color: var(--accent);
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .about-philosophy p {
     font-size: var(--fs-base);
     color: var(--text-secondary);
     line-height: 1.8;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
 }
 
-.about-philosophy p:last-child {
-    margin-bottom: 0;
-}
-
-/* Approach Section */
+/* Education Section */
 .about-approach h3 {
-    font-size: var(--fs-lg);
-    margin-bottom: var(--space-5);
-    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-6);
+    color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
+    letter-spacing: 0.15em;
+    font-weight: 800;
 }
 
-.approach-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.education-cards {
+    display: flex;
+    flex-direction: column;
     gap: var(--space-4);
 }
 
-.approach-card {
+.edu-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
     background: var(--bg-card);
+    padding: var(--space-6);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    padding: var(--space-5);
     transition: all var(--transition-base);
 }
 
-.approach-card:hover {
+.edu-card:hover {
+    background: var(--bg-card-hover);
     border-color: var(--accent);
-    transform: translateY(-2px);
+    transform: translateX(5px);
 }
 
-.approach-icon {
-    width: 40px;
-    height: 40px;
+.edu-card .approach-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--accent-glow);
-    border-radius: var(--radius-md);
-    color: var(--accent);
-    margin-bottom: var(--space-3);
 }
 
-.approach-card h4 {
-    font-size: var(--fs-sm);
-    font-weight: 600;
-    margin-bottom: var(--space-2);
+.edu-card-body h4 {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
 }
 
-.approach-card p {
+.edu-card-body p {
     font-size: var(--fs-sm);
     color: var(--text-muted);
-    line-height: 1.6;
+}
+
+.edu-meta {
+    margin-top: var(--space-2);
+    display: flex;
+    gap: var(--space-3);
+}
+
+.edu-period {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.edu-grade {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--accent);
 }
 
 /* Sidebar */
 .about-sidebar {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: var(--space-8);
 }
 
 .about-snapshot {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
-    padding: var(--space-6);
-    position: relative;
-    overflow: hidden;
-}
-
-.about-snapshot::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent) 0%, #8b5cf6 50%, #10b981 100%);
+    padding: var(--space-8);
+    backdrop-filter: blur(10px);
 }
 
 .about-snapshot h3 {
     font-size: var(--fs-sm);
-    font-weight: 600;
-    color: var(--text-muted);
+    font-weight: 800;
+    color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
 }
 
 .snapshot-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-5);
 }
 
 .snapshot-item {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: var(--space-3);
-    border-bottom: 1px dashed var(--border-subtle);
-}
-
-.snapshot-item:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .snapshot-item dt {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-xs);
+    font-weight: 700;
     color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .snapshot-item dd {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-base);
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .about-quote {
-    background: rgba(5, 5, 5, 0.6);
-    border: 1px solid var(--border-subtle);
-    border-left: 3px solid var(--accent);
-    border-radius: var(--radius-md);
-    padding: var(--space-5);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    position: relative;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.quote-icon {
+    color: var(--accent);
+    opacity: 0.2;
+    margin-bottom: var(--space-4);
 }
 
 .about-quote blockquote {
-    font-size: var(--fs-sm);
-    color: var(--text-secondary);
-    font-style: italic;
+    font-size: var(--fs-base);
+    color: var(--text-primary);
+    font-weight: 500;
     line-height: 1.7;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-4);
 }
 
 .about-quote cite {
-    font-size: var(--fs-xs);
-    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    color: var(--accent);
+    font-weight: 700;
     font-style: normal;
 }
 

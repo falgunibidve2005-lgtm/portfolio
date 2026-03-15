@@ -38,7 +38,7 @@ function Navigation() {
           className="nav-logo"
           onClick={(e) => handleNavClick(e, "hero")}
         >
-          Backend<span>.</span>Dev
+          Falguni<span>.</span>Dev
         </a>
 
         <button
@@ -81,7 +81,7 @@ function Navigation() {
             Learning
           </a>
           <a
-            href="/DurwankurMotiwale_CV.pdf"
+            href="/FalguniBidave_CV.pdf"
             className="nav-link"
             target="_blank"
             rel="noopener noreferrer"

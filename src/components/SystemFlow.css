@@ -1,10 +1,10 @@
 .system-flow-container {
     position: absolute;
     top: 50%;
-    right: -150px;
+    right: -250px;
     transform: translateY(-50%);
-    width: 1000px;
-    height: 1000px;
+    width: 950px;
+    height: 950px;
     z-index: 0;
     pointer-events: none;
     opacity: 0.9;

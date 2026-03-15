@@ -26,8 +26,8 @@ const contactLinks = [
             </svg>
         ),
         title: 'Email',
-        value: 'durwankurmotiwale@gmail.com',
-        href: 'mailto:durwankurmotiwale@gmail.com'
+        value: 'falgunibidve2005@gmail.com',
+        href: 'mailto:falgunibidve2005@gmail.com'
     },
     {
         icon: (
@@ -36,8 +36,8 @@ const contactLinks = [
             </svg>
         ),
         title: 'GitHub',
-        value: 'github.com/Durwankur01',
-        href: 'https://github.com/Durwankur01'
+        value: 'github.com/FalguniBidave',
+        href: 'https://github.com/FalguniBidave'
     },
     {
         icon: (
@@ -48,8 +48,8 @@ const contactLinks = [
             </svg>
         ),
         title: 'LinkedIn',
-        value: 'linkedin.com/in/durwankur-motiwale-aa3433344',
-        href: 'https://www.linkedin.com/in/durwankur-motiwale-aa3433344'
+        value: 'linkedin.com/in/falguni-bidave',
+        href: 'https://www.linkedin.com/in/falguni-bidave'
     }
 ]
 
@@ -72,7 +72,7 @@ function Contact() {
         // Create mailto link with form data
         const subject = `Portfolio Contact from ${formData.name}`
         const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`
-        window.location.href = `mailto:durwankurmotiwale@gmail.com?subject=${subject}&body=${body}`
+        window.location.href = `mailto:falgunibidve2005@gmail.com?subject=${subject}&body=${body}`
     }
 
     return (
@@ -89,8 +89,8 @@ function Contact() {
                         >
                             <h2>Let's Connect</h2>
                             <p>
-                                I'm currently open to internship and entry-level opportunities.
-                                If you'd like to discuss a project or just say hello, feel free to reach out.
+                                I'm currently open to internship and entry-level opportunities in web development.
+                                If you'd like to discuss a project, collaborate, or just say hello — feel free to reach out!
                             </p>
 
                             <motion.div className="contact-links" variants={staggerVariants}>
@@ -123,32 +123,34 @@ function Contact() {
                         >
                             <h3 className="contact-form-title">Send a Message</h3>
                             <form className="contact-form" onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="name">Your Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        className="form-input"
-                                        placeholder="Your Name..."
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="name">Your Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            className="form-input"
+                                            placeholder="Your Name..."
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label className="form-label" htmlFor="email">Your Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        className="form-input"
-                                        placeholder="Your Email..."
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="email">Your Email</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            className="form-input"
+                                            placeholder="Your Email..."
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="form-group">
@@ -186,7 +188,7 @@ function Contact() {
                 <div className="container">
                     <div className="footer-content">
                         <p className="footer-text">
-                            © 2024 Durwankur Motiwale. Built with care and curiosity.
+                            © 2025 Falguni Bidave. Built with passion and curiosity.
                         </p>
                         <div className="footer-links">
                             <a href="#hero" className="footer-link">Back to Top</a>

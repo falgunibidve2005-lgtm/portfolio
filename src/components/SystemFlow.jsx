@@ -1,3 +1,4 @@
+import * as THREE from 'three'
 import { Suspense, useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import {

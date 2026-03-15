@@ -25,8 +25,8 @@ const learningItems = [
                 <path d="M6 20v-4" />
             </svg>
         ),
-        title: 'Daily DSA Practice',
-        description: 'Solving problems consistently to build strong algorithmic thinking'
+        title: 'Data Structures & Algorithms',
+        description: 'Deepening algorithmic thinking to write more efficient and optimized code solutions'
     },
     {
         icon: (
@@ -35,28 +35,29 @@ const learningItems = [
                 <polyline points="8 6 2 12 8 18" />
             </svg>
         ),
-        title: 'C++ Fundamentals Project',
-        description: 'Building a project to solidify core C++ concepts and memory management'
+        title: 'React & Modern Frontend',
+        description: 'Expanding React skills to build more complex and interactive web applications'
     },
     {
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
             </svg>
         ),
-        title: 'FastAPI Backend System',
-        description: 'Developing a complete backend using FastAPI with proper architecture'
+        title: 'Japanese Language',
+        description: 'Learning Japanese to enhance international communication and collaboration skills'
     },
     {
         icon: (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
             </svg>
         ),
-        title: 'Backend Design Concepts',
-        description: 'Learning patterns like clean architecture, SOLID principles, and API design'
+        title: 'Database Design & Optimization',
+        description: 'Exploring advanced SQL query optimization and database schema design patterns'
     }
 ]
 
@@ -75,7 +76,7 @@ function Learning() {
                         <motion.h2 variants={fadeUpVariants}>What I'm Currently Working On</motion.h2>
                         <motion.p variants={fadeUpVariants}>
                             I believe in continuous improvement. Here's what I'm focused on right now
-                            to become a better engineer.
+                            to grow as a developer and communicator.
                         </motion.p>
 
                         <div className="learning-items">
@@ -105,12 +106,26 @@ function Learning() {
                                 to say 'I don't know, but I'll figure it out.'"
                             </p>
                             <div className="learning-author">
-                                <div className="learning-author-avatar">D</div>
+                                <div className="learning-author-avatar">F</div>
                                 <div className="learning-author-info">
                                     <h5>My Philosophy</h5>
                                     <p>Growth over perfection</p>
                                 </div>
                             </div>
+                        </div>
+
+                        {/* Internship callout */}
+                        <div className="internship-card">
+                            <div className="internship-header">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                </svg>
+                                <span>Industry Experience</span>
+                            </div>
+                            <h4>Industrial Trainee — Web Development</h4>
+                            <p>Sumago Infotech Pvt. Ltd., Nashik</p>
+                            <span className="internship-period">June 2023 – July 2023 · 6 Weeks</span>
                         </div>
                     </motion.div>
                 </div>
