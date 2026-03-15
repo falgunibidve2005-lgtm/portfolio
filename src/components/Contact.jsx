@@ -36,8 +36,8 @@ const contactLinks = [
             </svg>
         ),
         title: 'GitHub',
-        value: 'github.com/FalguniBidave',
-        href: 'https://github.com/FalguniBidave'
+        value: 'github.com/falgunibidve2005-lgtm',
+        href: 'https://github.com/falgunibidve2005-lgtm'
     },
     {
         icon: (
@@ -48,8 +48,8 @@ const contactLinks = [
             </svg>
         ),
         title: 'LinkedIn',
-        value: 'linkedin.com/in/falguni-bidave',
-        href: 'https://www.linkedin.com/in/falguni-bidave'
+        value: 'linkedin.com/in/falguni-bidave-a264b6326',
+        href: 'https://www.linkedin.com/in/falguni-bidave-a264b6326'
     }
 ]
 
